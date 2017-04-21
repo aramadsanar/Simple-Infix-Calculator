@@ -1,0 +1,59 @@
+# depslib dependency file v1.0
+1492778711 source:c:\users\armada nasar\documents\kuliah\programming\c\postfixgen\stack.cpp
+	"Stack.h"
+	<iostream>
+	<string>
+	<stdio.h>
+	<stdlib.h>
+
+1492778711 c:\users\armada nasar\documents\kuliah\programming\c\postfixgen\stack.h
+
+1492780592 source:c:\users\armada nasar\documents\kuliah\programming\c\postfixgen\postfixgen\main.cpp
+	<iostream>
+	<string>
+	<stdio.h>
+	<stdlib.h>
+	"../PostfixGenerator.h"
+
+1492780164 source:c:\users\armada nasar\documents\kuliah\programming\c\postfixgen\postfixgenerator.cpp
+	"PostfixGenerator.h"
+	"Stack.h"
+	<iostream>
+	<string>
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<math.h>
+
+1492780185 c:\users\armada nasar\documents\kuliah\programming\c\postfixgen\postfixgenerator.h
+	<iostream>
+	<string>
+	"Stack.h"
+	"StackInt.h"
+	"StackFloat.h"
+
+1492654454 source:c:\users\armada nasar\documents\kuliah\programming\c\postfixgen\intqueue.cpp
+	"IntQueue.h"
+	<iostream>
+	<string>
+
+1492654385 c:\users\armada nasar\documents\kuliah\programming\c\postfixgen\intqueue.h
+
+1492778567 c:\users\armada nasar\documents\kuliah\programming\c\postfixgen\stackint.h
+
+1492778567 source:c:\users\armada nasar\documents\kuliah\programming\c\postfixgen\stackint.cpp
+	<iostream>
+	<string>
+	<stdio.h>
+	<stdlib.h>
+	"StackInt.h"
+
+1492778711 c:\users\armada nasar\documents\kuliah\programming\c\postfixgen\stackfloat.h
+
+1492778711 source:c:\users\armada nasar\documents\kuliah\programming\c\postfixgen\stackfloat.cpp
+	"StackFloat.h"
+	<iostream>
+	<string>
+	<stdio.h>
+	<stdlib.h>
+
