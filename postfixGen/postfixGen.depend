@@ -8,14 +8,14 @@
 
 1492778711 c:\users\armada nasar\documents\kuliah\programming\c\postfixgen\stack.h
 
-1492780592 source:c:\users\armada nasar\documents\kuliah\programming\c\postfixgen\postfixgen\main.cpp
+1495627592 source:c:\users\armada nasar\documents\kuliah\programming\c\postfixgen\postfixgen\main.cpp
 	<iostream>
 	<string>
 	<stdio.h>
 	<stdlib.h>
 	"../PostfixGenerator.h"
 
-1492780164 source:c:\users\armada nasar\documents\kuliah\programming\c\postfixgen\postfixgenerator.cpp
+1495627280 source:c:\users\armada nasar\documents\kuliah\programming\c\postfixgen\postfixgenerator.cpp
 	"PostfixGenerator.h"
 	"Stack.h"
 	<iostream>
@@ -25,7 +25,7 @@
 	<string.h>
 	<math.h>
 
-1492780185 c:\users\armada nasar\documents\kuliah\programming\c\postfixgen\postfixgenerator.h
+1492780805 c:\users\armada nasar\documents\kuliah\programming\c\postfixgen\postfixgenerator.h
 	<iostream>
 	<string>
 	"Stack.h"

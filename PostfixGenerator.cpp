@@ -13,12 +13,18 @@ PostfixGenerator::PostfixGenerator()
 
 }
 
+int getMax(int a, int b)
+{
+    return (a>b) ? a : b;
+}
+
 /**String Builders Component*/
 bool PostfixGenerator::ValidateInput(string validator)
 {
     Stack inputValidationStack;
     inputValidationStack.emptyStack();
 
+    //check for parentheses pair before processing it further.
     for (unsigned int i = 0; i < validator.length(); i++)
     {
         if (validator[i] == '(')
@@ -52,9 +58,21 @@ int PostfixGenerator::priority(char simbol)
     }
     return nilai;
 }
+/**
+    getResult(string stringInfix)
+
+    Argument(s):
+        - the original infix string to be converted
+    Output(s):
+        - postfix string either passed to the calculation engine or to display
+    Output Format:
+        - 300 + 50 -> 300 50 +
+*/
+
 
 string PostfixGenerator::getResult(string stringInfix)
 {
+    //check input validity
     bool isInputValid = ValidateInput(stringInfix);
 
     if (!isInputValid)
@@ -63,9 +81,13 @@ string PostfixGenerator::getResult(string stringInfix)
         return "";
     }
 
+    //wipe the operator stack from prev operations (if exists)
     while (!stackOperator.empty())
         stackOperator.pop();
+
     string stringPostfix = "";
+
+    //add termination code on string, much like '\0' on C strings
     stringInfix = stringInfix + ")";
 
     stackOperator.push('(');
@@ -73,6 +95,8 @@ string PostfixGenerator::getResult(string stringInfix)
     char karakter, simbol;
     char numBuffer;
     unsigned int i = 0;
+    unsigned int bufCharPrio = 0;
+    //main processing loop
     for (i = 0; i < stringInfix.length(); i++)
     {
         simbol = stringInfix[i];
@@ -104,19 +128,33 @@ string PostfixGenerator::getResult(string stringInfix)
             stackOperator.push(simbol);
             break;
         case 0:
-            if (priority(stringPostfix[stringPostfix.length() -1]) >=1 && priority(stringPostfix[stringPostfix.length() -1]) <=5)
+            //spacing on the end of string if the last character is a math symbol
+            bufCharPrio = priority(stringPostfix[stringPostfix.length() - 1]);
+            //if (priority(stringPostfix[stringPostfix.length() -1]) >=1 && priority(stringPostfix[stringPostfix.length() -1]) <=5)
+            if (bufCharPrio >=1 && bufCharPrio <= 5)
                 stringPostfix = stringPostfix + " ";
+
             numBuffer = stringInfix[i];
+
             while(priority(numBuffer) == 0)
             {
                 stringPostfix = stringPostfix + numBuffer;
                 i += 1;
                 numBuffer = stringInfix[i];
             };
+
+            //add space
             stringPostfix = stringPostfix + " ";
+
+            //reverse by 1 char index
             i -= 1;
+
             //stringPostfix = stringPostfix + simbol;
             break;
+
+        //if it is neither a number nor a symbol, just add it anyway to the string
+        case 6:
+            continue;
         default:
             stringPostfix = stringPostfix + simbol;
         }
@@ -205,11 +243,13 @@ int PostfixGenerator::evalPostfix(string stringPostfix)
 
     while (!stringPostfix.empty())
     {
+        //load up one char then check its priority
         karakter = stringPostfix[0];
         prio = priority(karakter);
         /**
             Priority is re-used to categorize the characters.
         */
+        //do calculation if it is a symbol
         if (prio == 3 || prio == 4 || prio == 5)
         {
             operand2 = stackOperand.pop();
@@ -219,12 +259,14 @@ int PostfixGenerator::evalPostfix(string stringPostfix)
 
             truncateFrontString(stringPostfix);
         }
+        //numbers? use strtol then copy to numBuffer and push
         else if (prio == 0)
         {
             numBuffer = strtol(stringPostfix.c_str(), &nextBuf, 10);
             stringPostfix = nextBuf;
             stackOperand.push(numBuffer);
         }
+        //if it is a space, go ahead truncate that
         else if (prio == 6)
         {
             truncateFrontString(stringPostfix);
@@ -239,6 +281,8 @@ int PostfixGenerator::evalPostfix(string stringPostfix)
         }
     }
     free(nextBuf);
+
+    //pop() returns the actual result
     return stackOperand.pop();
 }
 

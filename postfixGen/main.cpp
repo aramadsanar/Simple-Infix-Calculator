@@ -8,7 +8,7 @@
     - Replaced the string format so this app supports multi-digit postfix
     - Added input validator to check whether the parentheses are already balanced or not
     - Rewrote the evaluator engine to support both negative number and float/decimal numbers
-    LastEdit: 4/21/2017
+    LastEdit: 4/21/2017 (Happy weed day!)
 */
 #include <iostream>
 #include <string>
@@ -19,24 +19,26 @@
 #define nullptr 0
 
 using namespace std;
-
+extern int getMax(int a, int b);
 bool isFloatString(string stringInfix)
 {
     for (unsigned int i = 0; i < stringInfix.length(); i++)
     {
+        //indeed, this is very stupid and naive way to check whether the string contains float number or not
         if (stringInfix[i] == '.')
             return true;
     }
     return false;
 }
 
-int main()
+int main(int argc, char** argv)
 {
+    //the whole infix processor is self-contained in this class so all these codes in main() are just test codes and user interface.
     PostfixGenerator postfix;
 
     int userChoice = 0;
     string userInput = "";
-    char inputFeed;
+//    char inputFeed;
     bool isFloat;
 
     do
@@ -45,9 +47,11 @@ int main()
         switch (userChoice)
         {
         case '1':
+            system("cls");
             cout << endl << "Please input your expression: ";
-            cin >> userInput;
-            cin >>inputFeed;
+            getchar();
+            std::getline(std::cin, userInput);
+            //cin >>inputFeed;
 
             cout << endl << "This expression in Postfix: " << postfix.getResult(userInput) << endl;;
             cout << "Result: ";
@@ -61,12 +65,12 @@ int main()
             cout << endl;
             break;
         case '2':
+            system("cls");
             cout << endl << "Please input your expression: ";
             cin >> userInput;
             cout << endl << "This expression in Postfix: " << postfix.getResult(userInput) << endl;
             break;
         }
-    }
-    while (userChoice != '3');
+    } while (userChoice != '3');
     return 0;
 }
