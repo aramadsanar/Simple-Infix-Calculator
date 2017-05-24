@@ -52,15 +52,15 @@ int main(int argc, char** argv)
             getchar();
             std::getline(std::cin, userInput);
             //cin >>inputFeed;
-
-            cout << endl << "This expression in Postfix: " << postfix.getResult(userInput) << endl;;
+            string postfixString = postfix.getResult(userInput);
+            cout << endl << "This expression in Postfix: " << postfixString << endl;;
             cout << "Result: ";
 
             isFloat = isFloatString(userInput);
             if (isFloat)
-                cout << postfix.floatEvalInfix(userInput);
+                cout << postfix.floatEvalInfix(postfixString);
             else
-                cout << postfix.evalInfix(userInput);
+                cout << postfix.evalInfix(postfixString);
 
             cout << endl;
             break;
