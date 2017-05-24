@@ -40,7 +40,7 @@ int main(int argc, char** argv)
     string userInput = "";
 //    char inputFeed;
     bool isFloat;
-
+    string postfixString;
     do
     {
         userChoice = postfix.showMenu();
@@ -52,7 +52,7 @@ int main(int argc, char** argv)
             getchar();
             std::getline(std::cin, userInput);
             //cin >>inputFeed;
-            string postfixString = postfix.getResult(userInput);
+            postfixString = postfix.getResult(userInput);
             cout << endl << "This expression in Postfix: " << postfixString << endl;;
             cout << "Result: ";
 
